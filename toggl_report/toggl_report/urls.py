@@ -18,6 +18,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('toggl_report_app/', include('toggl_report_app.urls')),
-    path('', views.index, name='index'),
     path('admin/', admin.site.urls),
 ]
