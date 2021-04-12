@@ -1,6 +1,18 @@
 from django.shortcuts import render
+from django.urls import reverse
+from django.http import Http404
+from django.views import generic
 
-def index(request):
 
-    return render(request, 'toggl_report_app/index.html', {})
+from .models import TogglUser
+
+class UserView(generic.ListView):
+    template_name = 'toggl_report_app/index.html'
+    context_object_name = 'User Select'
+
+    def get_queryset(self):
+        return TogglUser.objects.order_by('user_id')
+
+
+
 
