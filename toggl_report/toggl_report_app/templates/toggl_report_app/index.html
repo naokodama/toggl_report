@@ -2,6 +2,16 @@
   <header>
   </header>
 <body>
-  this is a template.
+    {% if user_select %}
+    <ui>
+        {% for user_id in user_select %}
+        <li>
+            <a href=""> {{user_id}} </a>
+            </li>
+        {% endfor %}
+    </ui>
+            {% else %}
+            <p> No toggl_report_app user. </p>
+            {% endif %}
 </body>
 </html>
