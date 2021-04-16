@@ -1,17 +1,19 @@
 <html>
-  <header>
-  </header>
+    <header>
+        {% load static %}
+        <link href="{% static 'toggl_report_app/index.css' %}" rel="stylesheet" type="text/css">
+    </header>
 <body>
     {% if user_select %}
     <ui>
         {% for user_id in user_select %}
-        <li>
-            <a href=""> {{user_id}} </a>
+            <li>
+                <a href="{% url 'toggl_report_app:daily_report_view' user_id %}"> {{user_id}} </a>
             </li>
         {% endfor %}
     </ui>
-            {% else %}
-            <p> No toggl_report_app user. </p>
-            {% endif %}
+    {% else %}
+    <p> No toggl_report_app user. </p>
+    {% endif %}
 </body>
 </html>

@@ -12,6 +12,10 @@ class UserView(generic.ListView):
     def get_queryset(self):
         return TogglUser.objects.order_by('user_id')
 
+class DailyView(generic.DetailView):
+    template_name = 'toggl_report_app/daily_report.html'
+    model = TogglUser
+    context_object_name = 'toggl_user'
 
-
-
+    def get_queryset(self):
+        return TogglUser.objects.filter(user_id = 'nao')
