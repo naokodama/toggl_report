@@ -18,4 +18,4 @@ class DailyView(generic.DetailView):
     context_object_name = 'toggl_user'
 
     def get_queryset(self):
-        return TogglUser.objects.filter(user_id = 'nao')
+        return TogglUser.objects.order_by('user_id')

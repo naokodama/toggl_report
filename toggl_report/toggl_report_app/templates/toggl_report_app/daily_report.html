@@ -3,8 +3,12 @@
         
     </header>
     <body>
-        <!-- Your choice user is {{ toggl_user.user_id }}. -->
-        <!-- And api_token is {{ toggl_user.api_token }}. -->
+        {% if toggl_user %}
+        {% for user in toggl_user.choice_set.all %}
+        User is {{ user.user_id }}.
+        And api_token is {{ user.api_token }}.
         this is a daily report page.
+        {% endfor %}
+        {% endif %}
     </body>
 </html>
