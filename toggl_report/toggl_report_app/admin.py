@@ -6,9 +6,10 @@ from .models import TogglUser
 
 class TogglUserAdmin(admin.ModelAdmin):
     fieldsets = [
-                 (None, {'fields': ['user_id']}),
-                 ('API_TOKEN', {'fields': ['api_token']}),
-                 ]
+        (None, {'fields': ['user_id']}),
+        ('API_TOKEN', {'fields': ['api_token']}),
+        ('MAIL ADDRESS' , {'fields': ['mail']}),
+        ]
     list_filter = ['user_id']
     search_fields = ['user_id']
 

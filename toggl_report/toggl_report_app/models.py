@@ -4,7 +4,8 @@ from django.db import models
 
 class TogglUser(models.Model):
     user_id = models.CharField(primary_key = True, max_length = 20)
-    api_token = models.CharField(max_length = 100)
+    api_token = models.CharField(default = '', max_length = 100)
+    mail = models.CharField(default = '', max_length = 100)
 
     def __str__(self):
         return self.user_id

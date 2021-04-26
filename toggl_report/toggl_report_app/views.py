@@ -6,10 +6,6 @@ from django.http import Http404
 from django.views import generic
 
 from .models import TogglUser
-try:
-    from .local_consts import * # import MAIL_ADDRESS const.
-except ImportError:
-    pass
 
 class UserView(generic.ListView):
     template_name = 'toggl_report_app/index.html'
@@ -33,7 +29,7 @@ def daily_view(request, user_id):
     Data = data[0]
     context = {'workspace_id' : Data['id']}
     params = {
-        'user_agent': MAIL_ADDRESS,
+        'user_agent': user_info.mail,
         'workspace_id': Data['id'],
         'since': '2021-04-01',
         'until': '2021-04-11',
@@ -43,5 +39,5 @@ def daily_view(request, user_id):
                      params=params)
     json_r = r.json()
     context = {'workspace_id' : Data['id'], 'report_json' : json_r}
-    
+
     return render(request, 'toggl_report_app/daily_report.html', context)
