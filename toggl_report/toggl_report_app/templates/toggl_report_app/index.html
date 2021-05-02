@@ -8,7 +8,7 @@
     <ui>
         {% for user_id in user_select %}
             <li>
-                <a href="{% url 'toggl_report_app:daily_report_view' user_id %}"> {{user_id}} </a>
+                <a href="{% url 'toggl_report_app:daily_report' user_id %}"> {{user_id}} </a>
             </li>
         {% endfor %}
     </ui>

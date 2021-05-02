@@ -2,8 +2,9 @@ import requests
 from requests.auth import HTTPBasicAuth
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
-from django.http import Http404
+from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.views import generic
+from django.utils import timezone
 
 from .models import TogglUser
 
@@ -18,11 +19,15 @@ class DailyView(generic.DetailView):
     template_name = 'toggl_report_app/daily_report.html'
     model = TogglUser
     context_object_name = 'toggl_user'
+    today = "{0:%Y-%m-%d}".format(timezone.now())
+
+    def render_to_response(self, context, **response_kwargs):
+        return HttpResponseRedirect(reverse('toggl_report_app:daily_report_view', args = (context['toggl_user'].user_id, self.today, )))
 
     def get_queryset(self):
         return TogglUser.objects.filter()
 
-def daily_view(request, user_id):
+def daily_view(request, user_id, date):
     user_info = get_object_or_404(TogglUser, pk = user_id)
     result = requests.get('https://www.toggl.com/api/v8/workspaces', auth = (user_info.api_token, 'api_token'))
     data = result.json()
@@ -31,8 +36,8 @@ def daily_view(request, user_id):
     params = {
         'user_agent': user_info.mail,
         'workspace_id': Data['id'],
-        'since': '2021-04-01',
-        'until': '2021-04-11',
+        'since': date,
+        'until': date,
     }
     r = requests.get('https://toggl.com/reports/api/v2/details',
                      auth=HTTPBasicAuth(user_info.api_token, 'api_token'),
