@@ -21,10 +21,10 @@ function calendarBody(year, month, today){
   var textSkip = true; // 日にちを埋める用のフラグ
   var textDate = 1; // 日付(これがカウントアップされます)
   var tableBody =''; // テーブルのHTMLを格納する変数
-  
+
   for (var row = 0; row < 6; row++){
     var tr = '<tr>';
-    
+
     for (var col = 0; col < 7; col++) {
       if (row === 0 && startDay === col){
         textSkip = false;
@@ -34,7 +34,7 @@ function calendarBody(year, month, today){
       }
       var addClass = todayYMFlag && textDate === today.getDate() ? 'is-today' : '';
       var textTd = textSkip ? ' ' : textDate++;
-      var td = '<td class="'+addClass+'">'+textTd+'</td>';
+        var td = '<td class="'+addClass+'"><a href="'+ generateUrlOfTheDay(year, parseInt(month) + 1, textTd) + '">' + textTd + '</a></td>';
       tr += td;
     }
     tr += '</tr>';
@@ -46,4 +46,11 @@ function calendarBody(year, month, today){
 function calendarHeading(year, month){
   $year.text(year);
   $month.text(month + 1);
+}
+
+function generateUrlOfTheDay(year, month, day) {
+    var urlText;
+    var dateStr = year + '-' + month + '-' + day;
+    urlText = '../' + dateStr + '/';
+    return urlText;
 }
