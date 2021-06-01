@@ -11,6 +11,29 @@ $window.on('load',function(){
     calendarHeading(currentYear, currentMonth);
     calendarBody(currentYear, currentMonth, today);
 });
+
+function prevMonth() {
+    var newDate = addMonth(currentYear, currentMonth, 1, -1);
+    currentYear = newDate.getFullYear();
+    currentMonth = newDate.getMonth();
+    calendarHeading(currentYear, currentMonth);
+    calendarBody(currentYear, currentMonth, today);
+}
+
+function nextMonth() {
+    var newDate = addMonth(currentYear, currentMonth, 1, 1);
+    currentYear = newDate.getFullYear();
+    currentMonth = newDate.getMonth();
+    calendarHeading(currentYear, currentMonth);
+    calendarBody(currentYear, currentMonth, today);
+}
+
+$('#prev_month').on('click', function() {
+    prevMonth();
+});
+
+$('#next_month').on('click', function() {
+    nextMonth();
 });
 
 function calendarBody(year, month, today){
@@ -48,6 +71,23 @@ function calendarHeading(year, month){
     $year.text(year);
     $month.text(month + 1);
 }
+
+function addMonth(year, month, day, moveValOfMonth) {
+    while(true) {
+        if (month + moveValOfMonth > 11) {
+            year += 1;
+            month = month + moveValOfMonth - 12;
+        } else if (month + moveValOfMonth < 0) {
+            year -= 1;
+            month = month + moveValOfMonth + 12;
+        } else {
+            month = month + moveValOfMonth;
+        }
+        if (month <= 11 && month >= 0) {
+            break;
+        }
+    }
+    return new Date(year, month, day);
 }
 
 function generateUrlOfTheDay(year, month, day) {
