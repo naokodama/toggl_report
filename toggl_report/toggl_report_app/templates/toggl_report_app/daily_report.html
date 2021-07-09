@@ -7,7 +7,7 @@
     <body>
         This is a daily report page.
         Data is {{ workspace_id }}.
-        Report is {{ report_json }}
+        <img src="{% url 'toggl_report_app:show_circle_graph' user_id date%}" width="700px" height="550px" alt = "">
 
         <div class="cls_calendar_panel" id="id_calendar_panel">
             <span id="prev_month"><-</span><span id="id_year"></span>年 <span id="id_month"></span>月<span id="next_month">-></span>
