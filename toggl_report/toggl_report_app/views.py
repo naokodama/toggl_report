@@ -5,6 +5,8 @@ from django.urls import reverse
 from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.views import generic
 from django.utils import timezone
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import io
 
