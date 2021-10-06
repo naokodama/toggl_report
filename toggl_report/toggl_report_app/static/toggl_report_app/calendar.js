@@ -2,12 +2,13 @@ var $window = $(window);
 var $year = $('#id_year');
 var $month = $('#id_month');
 var $tbody = $('#id_calendar_body');
-
-var today = new Date();
-var currentYear = today.getFullYear(),
-    currentMonth = today.getMonth();
+var currentYear;
+var currentMonth;
 
 $window.on('load',function(){
+    var today = $('#today').text() === "" ? new Date() : new Date($('#today').text());
+    currentYear = today.getFullYear();
+    currentMonth = today.getMonth();
     calendarHeading(currentYear, currentMonth);
     calendarBody(currentYear, currentMonth, today);
 });
@@ -16,6 +17,7 @@ function prevMonth() {
     var newDate = addMonth(currentYear, currentMonth, 1, -1);
     currentYear = newDate.getFullYear();
     currentMonth = newDate.getMonth();
+    var today = $('#today').text() === "" ? new Date() : new Date($('#today').text());
     calendarHeading(currentYear, currentMonth);
     calendarBody(currentYear, currentMonth, today);
 }
@@ -24,6 +26,7 @@ function nextMonth() {
     var newDate = addMonth(currentYear, currentMonth, 1, 1);
     currentYear = newDate.getFullYear();
     currentMonth = newDate.getMonth();
+    var today = $('#today').text() === "" ? new Date() : new Date($('#today').text());
     calendarHeading(currentYear, currentMonth);
     calendarBody(currentYear, currentMonth, today);
 }
