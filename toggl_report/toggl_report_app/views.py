@@ -8,6 +8,7 @@ from django.utils import timezone
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+import japanize_matplotlib #Macでの日本語の対応
 import io
 
 from .models import TogglUser
