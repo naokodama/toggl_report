@@ -5,29 +5,33 @@
         <link href="{% static 'toggl_report_app/daily_report.css' %}" rel="stylesheet" type="text/css"/>
     </header>
     <body>
-        This is a daily report page.
-        Data is {{ workspace_id }}.
-        <img src="{% url 'toggl_report_app:show_circle_graph' user_id date%}" width="700px" height="550px" alt = "">
-
-        <div class="cls_calendar_panel" id="id_calendar_panel">
-            <span id="prev_month"><-</span><span id="id_year"></span>年 <span id="id_month"></span>月<span id="next_month">-></span>
-
-            <table class="calendar">
-                <thead>
-                <tr>
-                    <th>月</th>
-                    <th>火</th>
-                    <th>水</th>
-                    <th>木</th>
-                    <th>金</th>
-                    <th>土</th>
-                    <th>日</th>
-                </tr>
-                </thead>
-                <tbody id="id_calendar_body">
-                </tbody>
-            </table>
+        <div id="left">
+            <div class="cls_calendar_panel" id="id_calendar_panel">
+                <span id="prev_month"><-</span><span id="id_year"></span>年 <span id="id_month"></span>月<span id="next_month">-></span>
+                
+                <table class="calendar">
+                    <thead>
+                        <tr>
+                            <th>月</th>
+                            <th>火</th>
+                            <th>水</th>
+                            <th>木</th>
+                            <th>金</th>
+                            <th>土</th>
+                            <th>日</th>
+                        </tr>
+                    </thead>
+                    <tbody id="id_calendar_body">
+                    </tbody>
+                </table>
+            </div>
         </div>
+        <div id="center">
+            This is a daily report page.
+            Data is {{ workspace_id }}.
+            <img src="{% url 'toggl_report_app:show_circle_graph' user_id date%}" width="700px" height="550px" alt = "">
+        </div>
+
         <script type="text/javascript" src="{% static 'toggl_report_app/calendar.js' %}"></script>
         <div id="today" class="hidden">{{ date }}</div>
     </body>
