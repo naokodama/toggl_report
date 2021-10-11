@@ -1,38 +1,46 @@
 <html>
     <header>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         {% load static %}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <link href="{% static 'toggl_report_app/daily_report.css' %}" rel="stylesheet" type="text/css"/>
     </header>
     <body>
-        <div id="left">
-            <div class="cls_calendar_panel" id="id_calendar_panel">
-                <span id="prev_month"><-</span><span id="id_year"></span>年 <span id="id_month"></span>月<span id="next_month">-></span>
-                
-                <table class="calendar">
-                    <thead>
-                        <tr>
-                            <th>月</th>
-                            <th>火</th>
-                            <th>水</th>
-                            <th>木</th>
-                            <th>金</th>
-                            <th>土</th>
-                            <th>日</th>
-                        </tr>
-                    </thead>
-                    <tbody id="id_calendar_body">
-                    </tbody>
-                </table>
+        <div id="container">
+            <div id="left">
+                <div class="cls_calendar_panel" id="id_calendar_panel">
+                    <span id="prev_month"><-</span><span id="id_year"></span>年 <span id="id_month"></span>月<span id="next_month">-></span>
+                    
+                    <table class="calendar">
+                        <thead>
+                            <tr>
+                                <th>月</th>
+                                <th>火</th>
+                                <th>水</th>
+                                <th>木</th>
+                                <th>金</th>
+                                <th>土</th>
+                                <th>日</th>
+                            </tr>
+                        </thead>
+                        <tbody id="id_calendar_body">
+                        </tbody>
+                    </table>
+                </div>
+                <button class="btn btn-outline-secondary" type="submit">ADD USER</button>
+                <button class="btn btn-primary" type="submit">LOAD</button>
             </div>
-        </div>
-        <div id="center">
-            This is a daily report page.
-            Data is {{ workspace_id }}.
-            <img src="{% url 'toggl_report_app:show_circle_graph' user_id date%}" width="700px" height="550px" alt = "">
+            <div id="center">
+                This is a daily report page.
+                Data is {{ workspace_id }}.
+                <img src="{% url 'toggl_report_app:show_circle_graph' user_id date%}" width="700px" height="550px" alt = "">
+            </div>
         </div>
 
         <script type="text/javascript" src="{% static 'toggl_report_app/calendar.js' %}"></script>
         <div id="today" class="hidden">{{ date }}</div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     </body>
 </html>
