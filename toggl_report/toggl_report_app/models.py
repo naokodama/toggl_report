@@ -10,3 +10,9 @@ class TogglUser(models.Model):
     def __str__(self):
         return self.user_id
 
+class SelectedUser(models.Model):
+    user_id = models.CharField(primary_key = True, max_length = 20)
+
+    def __str__(self):
+        return self.user_id
+
