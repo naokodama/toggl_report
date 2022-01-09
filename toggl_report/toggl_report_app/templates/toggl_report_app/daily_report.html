@@ -27,12 +27,10 @@
                         </tbody>
                     </table>
                 </div>
-                <button class="btn btn-outline-secondary" type="submit">ADD USER</button>
+                <button class="btn btn-outline-secondary" type="submit">CHANGE USER</button>
                 <button class="btn btn-primary" type="submit">LOAD</button>
             </div>
             <div id="center">
-                This is a daily report page.
-                Data is {{ workspace_id }}.
                 <img src="{% url 'toggl_report_app:show_circle_graph' user_id date%}" width="700px" height="550px" alt = "">
             </div>
         </div>
