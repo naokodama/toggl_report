@@ -34,7 +34,7 @@ class DailyView(generic.DetailView):
 
 def daily_view(request, user_id, date):
     user_info = get_object_or_404(TogglUser, pk = user_id)
-    result = requests.get('https://www.toggl.com/api/v8/workspaces', auth = (user_info.api_token, 'api_token'))
+    result = requests.get('https://api.track.toggl.com/api/v8/workspaces', auth = (user_info.api_token, 'api_token'))
     data = result.json()
     Data = data[0]
     params = {
@@ -43,7 +43,7 @@ def daily_view(request, user_id, date):
         'since': date,
         'until': date,
     }
-    r = requests.get('https://toggl.com/reports/api/v2/details',
+    r = requests.get('https://api.track.toggl.com/reports/api/v2/details',
                      auth=HTTPBasicAuth(user_info.api_token, 'api_token'),
                      params=params)
     json_r = r.json()
@@ -60,7 +60,7 @@ def plt2png():
 
 def getTogglData(user_id, date):
     user_info = get_object_or_404(TogglUser, pk = user_id)
-    result = requests.get('https://www.toggl.com/api/v8/workspaces', auth = (user_info.api_token, 'api_token'))
+    result = requests.get('https://api.track.toggl.com/api/v8/workspaces', auth = (user_info.api_token, 'api_token'))
     data = result.json()
     Data = data[0]
     context = {'workspace_id' : Data['id']}
@@ -70,7 +70,7 @@ def getTogglData(user_id, date):
         'since': date,
         'until': date,
     }
-    r = requests.get('https://toggl.com/reports/api/v2/details',
+    r = requests.get('https://api.track.toggl.com/reports/api/v2/details',
                      auth=HTTPBasicAuth(user_info.api_token, 'api_token'),
                      params=params)
     json_r = r.json()
