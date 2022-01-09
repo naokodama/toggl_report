@@ -1,19 +1,27 @@
-<html>
+<!doctype html>
+<html class="no-js">
     <head>
-        <!-- Foundation CSS -->
-        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/css/foundation.min.css"
-              crossorigin="anonymous">
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         <!-- jQuery -->
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-                integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-                crossorigin="anonymous"></script>
-        <!-- Foundation JavaScript -->
-        <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/js/foundation.min.js"
-                crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        {% block head %}
+        {% endblock %}
     </head>
 <body>
-    {% block body %}
-    {% endblock %}
+    <div class="row">
+        <div class="columns large-2">
+            {% block left-body %}
+            {% endblock %}
+        </div>
+        <div class="columns large-10">
+            {% block body %}
+            {% endblock %}
+        </div>
+    </div>
 </body>
 </html>
