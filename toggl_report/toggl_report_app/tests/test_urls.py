@@ -1,10 +1,11 @@
 from django.test import TestCase
-from django.urls import reverse
+from django.urls import reverse, resolve
+from .. import views 
 
 class TopPageTest(TestCase):
-    def test_port_top_page(self):
-        view = reverse("/")
-        self.assertEqual(views.UserView.as_view(), user_view)
+    def test_post_top_page(self):
+        url = reverse("toggl_report_app:user_view")
+        self.assertEqual(resolve(url).func.view_class, views.UserView)
 
 class UserFormTest(TestCase):
     def test_post_user_form_page(self):
@@ -12,7 +13,7 @@ class UserFormTest(TestCase):
         self.assertEqual(views.UserRegist.as_view(), user_regist_view)
 
 class TimeLineTest(TestCase):
-    def test_port_timeline_view(self):
+    def test_post_timeline_view(self):
         view = reverse("timeline/")
         self.assertEqual(views.TimelineView.as_view(), timeline_view)
 
