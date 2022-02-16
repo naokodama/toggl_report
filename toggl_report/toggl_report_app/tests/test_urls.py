@@ -1,5 +1,6 @@
 from django.test import TestCase
 from django.urls import reverse, resolve
+from django.utils import timezone
 from .. import views 
 
 class TopPageTest(TestCase):
@@ -18,8 +19,9 @@ class TimeLineTest(TestCase):
         self.assertEqual(views.TimelineView.as_view(), timeline_view)
 
 class CircleViewTest(TestCase):
+    current_date = "{0:%Y-%m-%d}".format(timezone.now())
     def test_post_circleview_test(self):
-        view = reverse("circle_view/")
+        view = reverse("toggl_report_app:circle_view")
         self.assertEqual(views.CircleView.as_view(), circle_view)
 
 class StickViewTest(TestCase):
