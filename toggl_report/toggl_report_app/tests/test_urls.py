@@ -1,3 +1,9 @@
+# [ ] 対象者を選択するための画面を作成する
+# [ ] 対象者を登録するための画面を作成する
+# [ ] 対象者を選択した後の画面を作成する
+# [ ] 複数人のtogglのデータのグラフを比較できるような画面を作成する
+# [ ] 
+
 from django.test import TestCase
 from django.urls import reverse, resolve
 from django.utils import timezone
